@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+.pytest_cache/
+
+brreg-enheter.csv
+signalpost-universe.jsonl.gz
+
+out/
+
+entry-companies.jsonl
+smoke-companies.jsonl
+smoke-orgs.txt
+missing-company.json
+
+*.pyc
