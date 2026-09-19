@@ -11,6 +11,7 @@ from norway_company_agent.research import answer_profile, screen_profiles
 
 
 PROFILE_FILE = ROOT / "out" / "profiles.jsonl"
+EXTERNAL_FILE = ROOT / "out" / "external-observations-test.jsonl"
 
 
 @st.cache_data
@@ -23,6 +24,17 @@ def load_profiles():
         if line.strip():
             rows.append(json.loads(line))
     return rows
+
+
+@st.cache_data
+def load_external_observations():
+    if not EXTERNAL_FILE.exists():
+        return []
+    return [
+        json.loads(line)
+        for line in EXTERNAL_FILE.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
 
 
 def format_value(value):
@@ -56,6 +68,14 @@ def get_fact(facts, claim, default="—"):
     return default
 
 
+def get_external_observations(observations, organisation_number):
+    return [
+        observation
+        for observation in observations
+        if str(observation.get("organisation_number")) == str(organisation_number)
+    ]
+
+
 st.set_page_config(
     page_title="Signalpost",
     page_icon="🔎",
@@ -68,6 +88,7 @@ st.title("🔎 Signalpost")
 st.caption("Evidence-backed company intelligence for Norwegian companies")
 
 profiles = load_profiles()
+external_observations = load_external_observations()
 
 if not profiles:
     st.error("No company profiles found. Run the Signalpost batch first.")
@@ -260,6 +281,122 @@ if mode == "Research a company":
                             f"**Retrieved:** "
                             f"{fact['retrieved_at']}"
                         )
+
+            # ---------- EXTERNAL INTELLIGENCE ----------
+
+            external_company = get_external_observations(
+                external_observations,
+                organisation_number,
+            )
+
+            if external_company:
+
+                st.divider()
+                st.subheader("External intelligence")
+
+                workforce = [
+                    x for x in external_company
+                    if x.get("signal_type") == "workforce_snapshot"
+                ]
+
+                social = [
+                    x for x in external_company
+                    if x.get("signal_type") == "profile_handle"
+                ]
+
+                activity = [
+                    x for x in external_company
+                    if x.get("signal_type") == "public_post"
+                ]
+
+                if workforce:
+                    st.write("### Workforce")
+
+                    for observation in workforce:
+                        metrics = observation.get("metrics") or {}
+                        value = metrics.get("workforce_value")
+                        measure = metrics.get("measure", "workforce")
+
+                        st.metric(
+                            "Latest reported workforce",
+                            format_value(value),
+                        )
+
+                        st.caption(
+                            f"{measure.replace('_', ' ').title()} · "
+                            f"effective {observation.get('effective_at', '—')}"
+                        )
+
+                        with st.expander("View workforce evidence"):
+                            st.write(
+                                f"**Evidence:** "
+                                f"{observation.get('evidence_span', '—')}"
+                            )
+                            st.write(
+                                f"**Source:** "
+                                f"{observation.get('source_url', '—')}"
+                            )
+                            st.write(
+                                f"**Retrieved:** "
+                                f"{observation.get('retrieved_at', '—')}"
+                            )
+
+                if social:
+                    st.write("### Verified social profiles")
+
+                    for observation in social:
+                        platform = observation.get("platform", "social")
+                        source_url = observation.get("source_url", "—")
+
+                        st.markdown(
+                            f"**{platform.title()}** — "
+                            f"{source_url}"
+                        )
+
+                        with st.expander("View verification"):
+                            st.write(
+                                f"**Identity verified:** "
+                                f"{observation.get('exact_entity', False)}"
+                            )
+                            st.write(
+                                f"**Source:** "
+                                f"{observation.get('source_class', '—')}"
+                            )
+                            st.write(
+                                f"**Discovery:** "
+                                f"{observation.get('metrics', {}).get('discovery_source_url', '—')}"
+                            )
+
+                if activity:
+                    st.write("### Company-site activity")
+
+                    for observation in activity:
+                        st.markdown(
+                            f"**{observation.get('evidence_span', 'Company activity')}**"
+                        )
+                        st.caption(
+                            observation.get("source_url", "—")
+                        )
+
+                        with st.expander("View evidence"):
+                            st.write(
+                                f"**Identity verified:** "
+                                f"{observation.get('exact_entity', False)}"
+                            )
+                            st.write(
+                                f"**Retrieved:** "
+                                f"{observation.get('retrieved_at', '—')}"
+                            )
+                            st.write(
+                                f"**Interpretation:** "
+                                f"{observation.get('metrics', {}).get('interpretation', 'Company-owned activity.')}"
+                            )
+
+                if not social and not activity:
+                    st.caption(
+                        "No additional externally verified social or company-site "
+                        "activity signals are available for this company in this run."
+                    )
 
             # ---------- IDENTITY / VERIFICATION ----------
 
