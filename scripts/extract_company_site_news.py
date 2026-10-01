@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 from __future__ import annotations
 
 import argparse
@@ -9,7 +9,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 
-NEWS_PATH = re.compile(r"/(?:news|press|aktuelt|nyheter|artikler|blog)(?:/|$)", re.I)
+NEWS_PATH = re.compile(r"/(?:news|press|aktuelt|nyheter|artikler|artikkel|arkiv|blog|showcases|case-studies|events|aktuelt-arkiv|Selskap/Presse/Pressemeldinger)(?:/|$)", re.I)
 
 
 def observation(profile: dict) -> dict | None:
@@ -76,3 +76,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

@@ -11,11 +11,11 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from norway_company_agent.external_footprint import publishable_observation, validate_observation  # noqa: E402
+from norway_company_agent.external_footprint import publishable_observation, validate_observation, safe_read_jsonl  # noqa: E402
 
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    return safe_read_jsonl(path, warn_on_error=True)
 
 
 def ratio(numerator: int, denominator: int) -> float:
@@ -73,6 +73,17 @@ def main() -> None:
     entity_precision = ratio(len(published) - wrong_entity, len(published))
     metric_precision = ratio(len(published) - wrong_metric, len(published))
     sentiment_accuracy = ratio(sentiment_correct, len(sentiment_audited)) if sentiment_audited else None
+    connector_policy_passed = bool(
+        published
+        and all(
+            item.get("acquisition_mode") in {"official_api", "licensed_api", "company_authorized_export", "permitted_public_page"}
+            and item.get("rights_status") == "approved"
+            for item in published
+        )
+    )
+    fresh_count = sum(bool(item.get("retrieved_at")) for item in accepted_all)
+    fresh_coverage = ratio(fresh_count, len(all_orgs))
+
     qualification = bool(
         audit_size_gate
         and published
@@ -80,6 +91,7 @@ def main() -> None:
         and unsupported == 0
         and entity_precision >= 0.995
         and metric_precision >= 0.98
+        and connector_policy_passed
     )
     report = {
         "scorer": "signalpost_external_footprint_eval_v1",
@@ -95,6 +107,8 @@ def main() -> None:
         "sentiment_audited": len(sentiment_audited),
         "sentiment_accuracy": sentiment_accuracy,
         "coverage": coverage,
+        "fresh_coverage": fresh_coverage,
+        "connector_policy_passed": connector_policy_passed,
         "platform_counts": dict(Counter(str(item.get("platform")) for item in accepted_all)),
         "acquisition_modes": dict(acquisition_modes),
         "minimum_audit": args.minimum_audit,

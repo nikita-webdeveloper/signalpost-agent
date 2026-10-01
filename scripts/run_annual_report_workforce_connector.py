@@ -117,7 +117,7 @@ def ocr_pdf(pdf_path: Path, *, pages: int, dpi: int) -> str:
         text = []
         for image_path in sorted(Path(temporary).glob("page-*.jpg")):
             completed = subprocess.run(
-                ["tesseract", str(image_path), "stdout", "-l", "eng", "--psm", "6"],
+                ["tesseract" if not Path(r"C:\Program Files\Tesseract-OCR\tesseract.exe").exists() else r"C:\Program Files\Tesseract-OCR\tesseract.exe", str(image_path), "stdout", "-l", "eng", "--psm", "6"],
                 check=True,
                 capture_output=True,
                 text=True,
@@ -176,6 +176,13 @@ def collect(profile: dict, cache_dir: Path, *, ocr_pages: int, ocr_dpi: int) -> 
         if count is None:
             return None, {"organisation_number": org, "status": status, "cache_hit": cache_hit, "pages": len(reader.pages), "ocr_used": ocr_used}
         digest = hashlib.sha256(raw).hexdigest()
+        # A cache hit was downloaded earlier: report the real download time, not "now".
+        fetched = (
+            datetime.fromtimestamp(cache_path.stat().st_mtime, tz=timezone.utc)
+            if cache_hit
+            else datetime.now(timezone.utc)
+        )
+        retrieved_at = fetched.isoformat().replace("+00:00", "Z")
         metrics = {"workforce_value": count, "measure": measure, "year": str(latest["year"]), "scope": "company_phrase"}
         metrics[str(measure)] = count
         observation = {
@@ -184,7 +191,7 @@ def collect(profile: dict, cache_dir: Path, *, ocr_pages: int, ocr_dpi: int) -> 
             "platform": "brreg",
             "signal_type": "workforce_snapshot",
             "source_url": url,
-            "retrieved_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "retrieved_at": retrieved_at,
             "content_sha256": digest,
             "exact_entity": True,
             "identity_proof": [

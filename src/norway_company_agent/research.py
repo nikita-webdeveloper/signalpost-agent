@@ -84,8 +84,22 @@ def answer_profile(row: dict[str, Any], question: str) -> dict[str, Any]:
         if website.get("status") != "available":
             unsupported.append("The registry-linked company website was not available to this run.")
 
+    if any(term in q for term in ("review", "rating", "omtale")):
+        reviews_data = evidence.get("reviews") or ((row.get("external_footprint") or {}).get("reviews"))
+        if reviews_data and reviews_data.get("status") == "available":
+            if reviews_data.get("average_rating") is not None:
+                facts.append(_claim("Average customer rating", reviews_data["average_rating"], reviews_data, "verified_customer_rating"))
+            if reviews_data.get("total_review_count") is not None:
+                facts.append(_claim("Total customer reviews", reviews_data["total_review_count"], reviews_data, "verified_customer_rating"))
+        else:
+            unsupported.append("No verified customer reviews or ratings were found for this exact entity through permitted providers.")
+
     if "sentiment" in q:
-        unsupported.append("Sentiment is not scored: no labelled Norwegian news/social evaluation corpus has been run, and company-owned pages are structurally promotional.")
+        sentiment_data = evidence.get("sentiment") or ((row.get("external_footprint") or {}).get("sentiment"))
+        if sentiment_data and sentiment_data.get("status") == "available" and sentiment_data.get("label"):
+            facts.append(_claim("Independent sentiment rollup", sentiment_data["label"], sentiment_data, "independent_sentiment_rollup"))
+        else:
+            unsupported.append("Sentiment is not scored: no labelled Norwegian news/social evaluation corpus has been run, and company-owned pages are structurally promotional.")
 
     return {
         "organisation_number": row.get("organisation_number"),

@@ -11,6 +11,7 @@ dependencies = [
   "streamlit>=1.64.0",
   "tldextract>=5.3,<6",
   "trafilatura>=2.0,<3",
+  "yt-dlp>=2026.8.19",
 ]
 
 [project.optional-dependencies]
@@ -31,3 +32,7 @@ package = false
 dev = [
     "pytest>=9.1.1",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+

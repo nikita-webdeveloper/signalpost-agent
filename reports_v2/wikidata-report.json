@@ -1,0 +1,16 @@
+{
+  "connector": "wikidata_p2333_lookup_v1",
+  "bindings_read": 8,
+  "observations": 7,
+  "quarantined": [
+    {
+      "organisation_number": "976073169",
+      "reason": "wikidata label disagrees with registry name; needs human review",
+      "item": "http://www.wikidata.org/entity/Q19383216",
+      "wikidata_label": "Nordisk institutt for studier av innovasjon, forskning og utdanning",
+      "registry_name": "FORSKNINGSSTIFTELSEN NIFU"
+    }
+  ],
+  "retrieved_at": "2026-09-21T04:18:07Z",
+  "claim_boundary": "Exact organisation-number match plus agreeing name. Proves an open-data entity record exists; says nothing about popularity or sentiment."
+}

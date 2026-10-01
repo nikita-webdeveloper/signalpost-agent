@@ -1,0 +1,42 @@
+{
+  "run_id": "resume-v2",
+  "started_at": "2026-09-21T11:51:22.288717Z",
+  "completed_at": "2026-09-21T11:51:38.825072Z",
+  "expected_count": 1000,
+  "emitted_envelopes": 1000,
+  "resumed_profiles": 1000,
+  "profiles_fetched_this_run": 0,
+  "modules": [
+    "registry",
+    "accounting_obligation",
+    "registry_live",
+    "financials",
+    "roles",
+    "group",
+    "locations",
+    "website"
+  ],
+  "registry": {
+    "registry_snapshot_sha256": "4ff19012c86ecf16bd7caeaea6735b2672eea904c8d52214de76090302cdfd70",
+    "registry_rows_scanned": 1172866,
+    "requested": 1000,
+    "selected": 1000
+  },
+  "operations": {
+    "requests": 0,
+    "bytes": 0,
+    "p50_ms": null,
+    "p95_ms": null
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "exact_expected_count": true,
+      "unique_organisation_numbers": true,
+      "all_entity_states_terminal": true,
+      "all_module_states_terminal": true,
+      "zero_silent_drops": true
+    },
+    "invalid_states": []
+  }
+}

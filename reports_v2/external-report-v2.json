@@ -1,0 +1,40 @@
+{
+  "scorer": "signalpost_external_footprint_eval_v1",
+  "claim_boundary": "Held-out observation audit plus full-corpus coverage; it does not validate an unlabelled connector.",
+  "profiles": 1000,
+  "observations": 338,
+  "audited_observations": 214,
+  "published_audited": 214,
+  "wrong_entity_publications": 0,
+  "unsupported_publications": 0,
+  "entity_precision": 1.0,
+  "metric_precision": 1.0,
+  "sentiment_audited": 0,
+  "sentiment_accuracy": null,
+  "coverage": {
+    "any_external": 0.277,
+    "two_platforms": 0.028,
+    "workforce_jobs": 0.246,
+    "ratings_reviews": 0.0,
+    "buzz_engagement": 0.034,
+    "sentiment": 0.0
+  },
+  "fresh_coverage": 0.338,
+  "connector_policy_passed": true,
+  "platform_counts": {
+    "company_site": 41,
+    "brreg": 246,
+    "linkedin": 13,
+    "youtube": 3,
+    "facebook": 16,
+    "instagram": 12,
+    "wikidata": 7
+  },
+  "acquisition_modes": {
+    "permitted_public_page": 85,
+    "official_api": 253
+  },
+  "minimum_audit": 100,
+  "audit_size_gate": true,
+  "qualification_passed": true
+}

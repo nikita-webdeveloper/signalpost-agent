@@ -793,6 +793,14 @@ class OperationsTests(unittest.TestCase):
         self.assertTrue(profile_complete_for_modules(complete, ["registry", "website"]))
         self.assertFalse(profile_complete_for_modules(partial, ["registry", "website"]))
 
+    def test_batch_resume_rejects_corrupted_or_malformed_evidence(self):
+        self.assertFalse(profile_complete_for_modules(None, ["registry"]))
+        self.assertFalse(profile_complete_for_modules({}, ["registry"]))
+        self.assertFalse(profile_complete_for_modules({"evidence": "not_a_dict"}, ["registry"]))
+        self.assertFalse(profile_complete_for_modules({"evidence": {"registry": None}}, ["registry"]))
+        self.assertFalse(profile_complete_for_modules({"evidence": {"registry": {"status": "invalid_status"}}}, ["registry"]))
+        self.assertFalse(profile_complete_for_modules({"evidence": {"registry": {"status": "available"}}}, ["registry", "missing_module"]))
+
     def test_nearest_rank_percentiles_are_deterministic(self):
         self.assertEqual(percentile([1, 2, 3, 4, 100], 0.5), 3)
         self.assertEqual(percentile([1, 2, 3, 4, 100], 0.95), 100)
@@ -850,6 +858,37 @@ class WebsiteTests(unittest.TestCase):
         self.assertEqual(len(record["value"]["pages"]), 2)
         self.assertEqual(record["content_sha256"], homepage["content_sha256"])
         self.assertEqual(record["value"]["scheduler"], "scrapy_resumable_v1")
+
+    def test_secondary_page_retains_structured_review_organisations(self):
+        homepage = extract_page_event(
+            organisation_number="923609016",
+            requested_url="https://example.no/",
+            final_url="https://example.no/",
+            status_code=200,
+            content_type="text/html",
+            body=b"<html><title>Example AS</title><body>Example AS company homepage with substantive identity content.</body></html>",
+            page_kind="homepage",
+            retrieved_at="2026-08-22T00:00:00Z",
+        )
+        secondary = extract_page_event(
+            organisation_number="923609016",
+            requested_url="https://example.no/anmeldelser",
+            final_url="https://example.no/anmeldelser",
+            status_code=200,
+            content_type="text/html",
+            body=(
+                b'<script type="application/ld+json">'
+                b'{"@type":"LocalBusiness","name":"Example AS",'
+                b'"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.7","reviewCount":"12"}}'
+                b'</script>'
+            ),
+            page_kind="priority",
+            retrieved_at="2026-08-22T00:00:01Z",
+        )
+        record = merge_profile_events({"website": "https://example.no"}, [homepage, secondary])
+        review_page = next(page for page in record["value"]["pages"] if page["url"].endswith("/anmeldelser"))
+        self.assertEqual(review_page["structured_organisations"][0]["aggregateRating"]["reviewCount"], "12")
+        self.assertEqual(record["value"]["structured_organisations"][0]["name"], "Example AS")
 
     def test_footer_identity_is_preserved_for_exact_company_gate(self):
         event = extract_page_event(
@@ -930,8 +969,8 @@ class WebsiteTests(unittest.TestCase):
         self.assertIsNone(normalize_social_url("https://[object Object]"))
 
     def test_priority_pages_stay_on_exact_site(self):
-        soup = BeautifulSoup('<a href="/kontakt">Contact</a><a href="https://other.no/about">About</a><a href="/products">Products</a>', "html.parser")
-        self.assertEqual(_priority_links("https://example.no/", soup), ["https://example.no/kontakt"])
+        soup = BeautifulSoup('<a href="/anmeldelser">Reviews</a><a href="/kontakt">Contact</a><a href="https://other.no/about">About</a><a href="/products">Products</a>', "html.parser")
+        self.assertEqual(_priority_links("https://example.no/", soup), ["https://example.no/anmeldelser", "https://example.no/kontakt"])
 
     def test_js_shell_is_only_a_fallback_candidate(self):
         shell = BeautifulSoup('<html><script src="a.js"></script><script src="b.js"></script></html>', "html.parser")
@@ -1415,5 +1454,50 @@ class VerifiedSiteSeedTests(unittest.TestCase):
             self.assertIn("unknown organisations", failed.stderr)
 
 
+class EvaluatorPipelineTests(unittest.TestCase):
+    def test_evaluate_sentiment_smoke_mode(self):
+        import subprocess
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "sentiment-report.json"
+            command = [
+                sys.executable, str(ROOT / "scripts" / "evaluate_sentiment.py"),
+                "--gold", str(ROOT / "tests" / "fixtures" / "sentiment-smoke-gold.jsonl"),
+                "--predictions", str(ROOT / "tests" / "fixtures" / "sentiment-smoke-predictions.jsonl"),
+                "--output", str(output),
+                "--allow-smoke",
+            ]
+            result = subprocess.run(command, check=True, capture_output=True, text=True)
+            report = json.loads(output.read_text(encoding="utf-8"))
+            self.assertTrue(report["smoke_mode"])
+            self.assertEqual(report["accuracy"], 1.0)
+            self.assertEqual(report["wrong_entity_predictions"], 0)
+            self.assertFalse(report["qualification_passed"])
+
+    def test_evaluate_ux_scoring(self):
+        import subprocess
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as directory:
+            profiles = Path(directory) / "profiles.jsonl"
+            obs = Path(directory) / "obs.jsonl"
+            output = Path(directory) / "ux-report.json"
+            profiles.write_text(json.dumps({"organisation_number": "123456789", "name": "Test AS"}) + "\n", encoding="utf-8")
+            obs.write_text(json.dumps({"id": "obs-1", "organisation_number": "123456789", "platform": "facebook", "signal_type": "profile_handle"}) + "\n", encoding="utf-8")
+            command = [
+                sys.executable, str(ROOT / "scripts" / "evaluate_ux.py"),
+                "--profiles", str(profiles),
+                "--observations", str(obs),
+                "--output", str(output),
+            ]
+            result = subprocess.run(command, check=True, capture_output=True, text=True)
+            report = json.loads(output.read_text(encoding="utf-8"))
+            self.assertEqual(report["score"], 8.0)
+            self.assertTrue(report["external_intelligence_presented"])
+            self.assertTrue(report["qualification_passed"])
+
+
 if __name__ == "__main__":
     unittest.main()
+

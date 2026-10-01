@@ -1,0 +1,49 @@
+{
+  "gold_items": 4,
+  "published_predictions": 4,
+  "accuracy": 1.0,
+  "macro_f1": 1.0,
+  "macro_f1_labels": [
+    "positive",
+    "neutral",
+    "negative",
+    "mixed"
+  ],
+  "per_label": {
+    "positive": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    "neutral": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    "negative": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    "mixed": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    }
+  },
+  "wrong_entity_predictions": 0,
+  "exact_entity_precision": 1.0,
+  "evidence_supported_predictions": 4,
+  "evidence_support_rate": 1.0,
+  "company_owned_predictions": 0,
+  "coverage": 1.0,
+  "minimum_items_gate": false,
+  "qualification_passed": false,
+  "smoke_mode": true,
+  "qualification_tier": "local_smoke_qualification",
+  "qualification_note": "Smoke evaluation on 4 items. Full qualification gate requires >= 300 held-out gold labels."
+}

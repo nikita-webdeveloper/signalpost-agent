@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from norway_company_agent.crawl_events import merge_profile_events, missing_seed_error_events  # noqa: E402
+from norway_company_agent.email_domain_discovery import discover_website_from_email_domain  # noqa: E402
 from norway_company_agent.identity import apply_website_identity_gate  # noqa: E402
 from norway_company_agent.operations import domain_request_summary, latency_summary, peak_rss_bytes  # noqa: E402
 
@@ -33,6 +34,15 @@ def write_jsonl(path: Path, rows: list[dict]) -> None:
 
 def terminal_events_for_run(profiles: list[dict], events: list[dict], crawl_complete: bool) -> list[dict]:
     return missing_seed_error_events(profiles, events) if crawl_complete else []
+
+
+def apply_email_domain_fallback(profile: dict) -> tuple[dict, dict]:
+    website, metrics = discover_website_from_email_domain(profile)
+    profile.setdefault("evidence", {})["website"] = website
+    assessment = (website.get("value") or {}).get("identity_assessment") or {}
+    if assessment.get("publishable"):
+        profile["website"] = (website.get("value") or {}).get("final_url") or website.get("source_url")
+    return website, metrics
 
 
 def main() -> None:
@@ -80,9 +90,20 @@ def main() -> None:
     process = CrawlerProcess(settings)
     crawler = process.create_crawler(SignalpostWebsiteSpider)
     selected_numbers = set(args.organisation_numbers or []) or None
+    rows = read_jsonl(input_path)
+    pre_crawl_fallback_profiles = 0
+    for row in rows:
+        if not row.get("website"):
+            fallback_record, _ = apply_email_domain_fallback(row)
+            fallback_assessment = (fallback_record.get("value") or {}).get("identity_assessment") or {}
+            if fallback_record.get("status") == "available" and fallback_assessment.get("publishable"):
+                row["website"] = (fallback_record.get("value") or {}).get("final_url") or fallback_record.get("source_url")
+                pre_crawl_fallback_profiles += 1
+    crawl_input_path = jobdir / "pre-crawl-input.jsonl"
+    write_jsonl(crawl_input_path, rows)
     process.crawl(
         crawler,
-        profiles_path=str(input_path),
+        profiles_path=str(crawl_input_path),
         limit=args.limit,
         organisation_numbers=",".join(sorted(selected_numbers)) if selected_numbers else None,
     )
@@ -94,7 +115,7 @@ def main() -> None:
     stats = crawler.stats.get_stats()
     crawl_complete = stats.get("finish_reason") == "finished"
 
-    rows = read_jsonl(input_path)
+    rows = read_jsonl(crawl_input_path)
     crawl_targets = [
         row for row in rows
         if row.get("website") and (selected_numbers is None or row["organisation_number"] in selected_numbers)
@@ -115,12 +136,25 @@ def main() -> None:
         dedupe.add(key)
         by_org[str(event.get("organisation_number") or "")].append(event)
     touched = 0
+    email_fallback_profiles = 0
     website_statuses: Counter[str] = Counter()
     identity_statuses: Counter[str] = Counter()
     published_socials = 0
     for row in rows:
         profile_events = by_org.get(row["organisation_number"])
         if not profile_events:
+            if not row.get("website"):
+                fallback_record, _ = apply_email_domain_fallback(row)
+                fallback_assessment = (fallback_record.get("value") or {}).get("identity_assessment") or {}
+                row.setdefault("evidence", {})["website"] = fallback_record
+                website_statuses[fallback_record.get("status", "invalid")] += 1
+                if fallback_assessment:
+                    identity_statuses[fallback_assessment.get("status", "invalid")] += 1
+                if fallback_record.get("status") == "available":
+                    email_fallback_profiles += 1
+                if fallback_assessment.get("publishable"):
+                    row["website"] = (fallback_record.get("value") or {}).get("final_url") or fallback_record.get("source_url")
+                touched += 1
             continue
         website = merge_profile_events(row, profile_events)
         gated = apply_website_identity_gate(row, website)
@@ -151,6 +185,7 @@ def main() -> None:
         "profiles": len(rows),
         "website_seeds_selected": len(crawl_targets),
         "profiles_with_events": touched,
+        "email_fallback_profiles": email_fallback_profiles,
         "unique_events": len(dedupe),
         "events_added": events_added,
         "events_present_before_run": len(events_before),

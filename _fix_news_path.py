@@ -1,0 +1,1 @@
+from pathlib import Path\np=Path('scripts/extract_company_site_news.py')\nlines=p.read_text(encoding='utf-8').splitlines()\nlines[11] = "NEWS_PATH = re.compile(r'/\\(?:news|press|aktuelt|nyheter|artikler|artikkel|arkiv|blog|showcases|case-studies|events|aktuelt-arkiv|Selskap/Presse/Pressemeldinger)(?:/|$)', re.I)"\np.write_text('\\n'.join(lines)+'\\n', encoding='utf-8')\n

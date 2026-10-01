@@ -1,0 +1,6 @@
+{
+    "title": "Endpoint GET /openapi.json not found",
+    "status": 404,
+    "type": "https://javalin.io/documentation#endpointnotfound",
+    "details": {}
+}

@@ -1,0 +1,49 @@
+{
+  "corpus": "frozen submission-1000 research-agent suite v1",
+  "profiles": 1000,
+  "questions": 4,
+  "single_company_supported": true,
+  "qa_results": [
+    {
+      "id": "single_company",
+      "organisation_number": "985589003",
+      "question": "Who leads this company and what financial facts and locations are available?",
+      "facts_count": 11,
+      "minimum_facts": 6,
+      "facts_valid": true,
+      "required_claims_present": true,
+      "supported": true
+    }
+  ],
+  "screen_results": [
+    {
+      "query": "companies in Oslo with more than 5 employees and revenue over 1 million top 10 by revenue",
+      "actual_count": 10,
+      "exact_membership_and_order": true,
+      "exact_plan": true,
+      "citations_complete": true
+    },
+    {
+      "query": "top 5 by revenue",
+      "actual_count": 5,
+      "exact_membership_and_order": true,
+      "exact_plan": true,
+      "citations_complete": true
+    }
+  ],
+  "unsupported_abstention": true,
+  "external_footprint_qa_passed": true,
+  "saved_work": true,
+  "provenance_export": true,
+  "points": {
+    "cited_single_company_qa": 4.0,
+    "cross_company_screening": 3.0,
+    "exact_inspectable_filters": 2.0,
+    "unsupported_abstention": 1.0,
+    "saved_history": 1.0,
+    "provenance_export": 1.0
+  },
+  "score": 12.0,
+  "maximum": 12,
+  "qualification_passed": true
+}

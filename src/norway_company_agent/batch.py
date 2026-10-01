@@ -159,6 +159,22 @@ def validate_envelopes(envelopes: list[dict[str, Any]], expected_count: int) -> 
     return {"passed": all(checks.values()), "checks": checks, "invalid_states": invalid_states}
 
 
+VALID_EVIDENCE_STATUSES = {"available", "not_applicable", "not_found", "blocked", "source_error"}
+
+
 def profile_complete_for_modules(profile: dict[str, Any], modules: Iterable[str]) -> bool:
-    records = profile.get("evidence", {})
-    return all(module in records and records[module].get("status") != "not_fetched" for module in modules)
+    if not isinstance(profile, dict):
+        return False
+    records = profile.get("evidence")
+    if not isinstance(records, dict):
+        return False
+    for module in modules:
+        if module not in records or not isinstance(records[module], dict):
+            return False
+        rec = records[module]
+        status = rec.get("status")
+        if not status or status not in VALID_EVIDENCE_STATUSES:
+            return False
+        if evidence_terminal_state(rec) not in TERMINAL_STATES:
+            return False
+    return True

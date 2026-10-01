@@ -1,0 +1,2002 @@
+{
+  "connector": "official_annual_report_workforce_v1",
+  "eligible": 249,
+  "accepted": 246,
+  "status_counts": {
+    "accepted": 246,
+    "no_employee_phrase": 2,
+    "conflicting_employee_counts": 1
+  },
+  "claim_boundary": "Latest official PDF, exact organisation number in document, company-scope employee phrase only; group phrases and conflicts abstain.",
+  "company_results": [
+    {
+      "organisation_number": "813270862",
+      "status": "accepted",
+      "workforce_value": 2,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "815699912",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "816559472",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "816668352",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "817206662",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "817705642",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "822532152",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "823344112",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "825148442",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "826714352",
+      "status": "accepted",
+      "workforce_value": 0.5,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "827340162",
+      "status": "accepted",
+      "workforce_value": 2,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "827929182",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "831676752",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "832681172",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "832840572",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "833074822",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "834120852",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "835292002",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "879128552",
+      "status": "accepted",
+      "workforce_value": 2,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "887325022",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "888567232",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "890546242",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "891742622",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "894075562",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "896331922",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "899322932",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "911921340",
+      "status": "no_employee_phrase",
+      "cache_hit": true,
+      "pages": 30,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "912070875",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "912276600",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "912344126",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "912450287",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "912653277",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "912825124",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "912878716",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "913492986",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "913656636",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "913951867",
+      "status": "accepted",
+      "workforce_value": 2,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "914561302",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "914569389",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "914810795",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "914968283",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "915734448",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "916544472",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "916663242",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "916804261",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "916811136",
+      "status": "accepted",
+      "workforce_value": 2,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "917364907",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "917427046",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "917722897",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "917840822",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "918158936",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "918570799",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "919287535",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "919455144",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "919496401",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "919578378",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "919820101",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "920203930",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "920213561",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "920281486",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "920313361",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "920616887",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "920798446",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "921320817",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "921373554",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "921704593",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "921835647",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "921835876",
+      "status": "accepted",
+      "workforce_value": 4,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "922142955",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "922199477",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "922547165",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "922564183",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "922605963",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "922613095",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "922662193",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "922847894",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "923094377",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "923106308",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "923766545",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "924367555",
+      "status": "accepted",
+      "workforce_value": 4,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "924695013",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "924719788",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "924725834",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "924920963",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "925283339",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "925437158",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "925606235",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "925615765",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "925800023",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "926311735",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "926320459",
+      "status": "accepted",
+      "workforce_value": 1.71,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "926735799",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "926801473",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "926861735",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "927101327",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "927210657",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "927238357",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "927297809",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "927356783",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "927415119",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "927631881",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "927967855",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "928238407",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "928309371",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "928348695",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "928357007",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "928996239",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "929259114",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "929346769",
+      "status": "conflicting_employee_counts",
+      "cache_hit": true,
+      "pages": 19,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "929418247",
+      "status": "accepted",
+      "workforce_value": 10.3,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "929515293",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "929603672",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "929634691",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "929647785",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "929988396",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "930081779",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "930132764",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "930154962",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "930355496",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "930521302",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "930601594",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "930675431",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "930847097",
+      "status": "accepted",
+      "workforce_value": 5,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "930856916",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "931032445",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "931044419",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "931493841",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "931615815",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "932056046",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "932072602",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "932089343",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "932496089",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "932799650",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "932827646",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "932862689",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "933460371",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "933593843",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "933787141",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "933823369",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "933900843",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "933989208",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "934010639",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "934047575",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "934157761",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "934282973",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "934304454",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "934438450",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "934481070",
+      "status": "accepted",
+      "workforce_value": 0.5,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "934531930",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "934549392",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "934860926",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "934949706",
+      "status": "accepted",
+      "workforce_value": 2,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935013623",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935095190",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935107989",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935112303",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935120004",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935174856",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935263956",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935582423",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935597447",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935727634",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935780462",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935828872",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935833175",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935834325",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "935845432",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936009883",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936056210",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936245064",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936299989",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936514545",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936534112",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936629830",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936645410",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936648800",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936662528",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936740901",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "936857744",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "941305989",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "943294712",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "946686166",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "948516810",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "948955628",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "958589174",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "963970935",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "967934895",
+      "status": "accepted",
+      "workforce_value": 0.01,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "970916636",
+      "status": "accepted",
+      "workforce_value": 2,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "971089989",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "971310502",
+      "status": "accepted",
+      "workforce_value": 0.5,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "976898850",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "977171962",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "977539366",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "980165493",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "980263681",
+      "status": "accepted",
+      "workforce_value": 3,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "980623149",
+      "status": "accepted",
+      "workforce_value": 2.5,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "980997146",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "982215617",
+      "status": "accepted",
+      "workforce_value": 1.2,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "982669251",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "982942942",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "982983908",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "983876943",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "983885748",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "983928234",
+      "status": "no_employee_phrase",
+      "cache_hit": true,
+      "pages": 7,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "984529295",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "985589003",
+      "status": "accepted",
+      "workforce_value": 3,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "986308970",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "986947116",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "987602945",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "987743468",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "988263486",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "988415677",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "988573949",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "988814415",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "988970042",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "988974188",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "989004670",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "989082388",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "989155911",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "989183869",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "989202723",
+      "status": "accepted",
+      "workforce_value": 0.5,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "989264087",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "989896091",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "990446539",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "990598835",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "990625204",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "990821178",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "991303626",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "991429999",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "991528008",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "991918019",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "991949666",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "991972889",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "992458062",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "992957077",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "993515159",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "993550116",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "994870920",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "995354314",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "996973166",
+      "status": "accepted",
+      "workforce_value": 2,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "997830792",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "998315417",
+      "status": "accepted",
+      "workforce_value": 2,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "998487099",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "998713501",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "998805112",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "999111173",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "999238602",
+      "status": "accepted",
+      "workforce_value": 0,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "999288448",
+      "status": "accepted",
+      "workforce_value": 1,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    },
+    {
+      "organisation_number": "999413706",
+      "status": "accepted",
+      "workforce_value": 2,
+      "measure": "full_time_equivalents",
+      "cache_hit": true,
+      "ocr_used": true
+    }
+  ]
+}

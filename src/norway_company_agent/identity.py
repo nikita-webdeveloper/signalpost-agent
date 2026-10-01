@@ -135,6 +135,88 @@ def assess_social_identity(profile: dict[str, Any], link: dict[str, str]) -> dic
         "method": "deterministic_social_handle_identity_v1",
     }
 
+def _verified_website_social_identity(
+    profile: dict[str, Any],
+    website: dict[str, Any],
+    link: dict[str, str],
+) -> dict[str, Any]:
+    if website.get("status") != "available":
+        return {
+            **link,
+            "identity_score": 0.0,
+            "publishable": False,
+            "reason": "website is not available",
+            "method": "verified_website_domain_identity_v1",
+        }
+
+    value = website.get("value") or {}
+    assessment = value.get("identity_assessment") or {}
+
+    if not assessment.get("publishable"):
+        return {
+            **link,
+            "identity_score": 0.0,
+            "publishable": False,
+            "reason": "verified website identity is not publishable",
+            "method": "verified_website_domain_identity_v1",
+        }
+
+    platform = str(link.get("platform") or "").strip().casefold()
+
+    if platform == "x":
+        return {
+            **link,
+            "identity_score": 0.0,
+            "publishable": False,
+            "reason": "X/Twitter requires direct handle identity evidence",
+            "method": "verified_website_domain_identity_v1",
+        }
+
+    website_url = str(
+        value.get("final_url") or website.get("source_url") or ""
+    ).strip()
+    social_url = str(link.get("url") or "").strip()
+
+    website_host = urllib.parse.urlparse(website_url).hostname or ""
+
+    if not website_host or not social_url:
+        return {
+            **link,
+            "identity_score": 0.0,
+            "publishable": False,
+            "reason": "missing website or social URL",
+            "method": "verified_website_domain_identity_v1",
+        }
+
+    domain_token = (
+        website_host.casefold()
+        .removeprefix("www.")
+        .split(".")[0]
+    )
+
+    social_text = urllib.parse.unquote(social_url).casefold()
+
+    if (
+        not domain_token
+        or len(domain_token) < 3
+        or domain_token not in social_text
+    ):
+        return {
+            **link,
+            "identity_score": 0.0,
+            "publishable": False,
+            "reason": "social URL does not contain the verified website domain token",
+            "method": "verified_website_domain_identity_v1",
+        }
+
+    return {
+        **link,
+        "identity_score": 0.92,
+        "publishable": True,
+        "matched_tokens": [domain_token],
+        "reason": "non-X social URL contains the primary token of a verified company website",
+        "method": "verified_website_domain_identity_v1",
+    }
 
 def apply_website_identity_gate(profile: dict[str, Any], website: dict[str, Any]) -> dict[str, Any]:
     if website.get("status") != "available":
@@ -145,7 +227,14 @@ def apply_website_identity_gate(profile: dict[str, Any], website: dict[str, Any]
     value["identity_assessment"] = assessment
     original = list(value.get("discovered_social_links") or value.get("social_links") or [])
     value["discovered_social_links"] = original
-    social_assessments = [assess_social_identity(profile, link) for link in original]
+    social_assessments = []
+    for link in original:
+         assessment_item = assess_social_identity(profile, link)
+         if not assessment_item["publishable"]:
+               assessment_item = _verified_website_social_identity(
+                   profile, website, assessment_item
+               )
+         social_assessments.append(assessment_item)
     value["social_link_assessments"] = social_assessments
     value["social_links"] = [
         {"platform": item["platform"], "url": item["url"]}

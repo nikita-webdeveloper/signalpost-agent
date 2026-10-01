@@ -102,6 +102,123 @@ def publishable_observation(item: dict[str, Any]) -> bool:
     return not validate_observation(item)
 
 
+def build_publishable_observation(
+    *,
+    id: str,
+    organisation_number: str,
+    platform: str,
+    signal_type: str,
+    source_url: str,
+    retrieved_at: str,
+    content_sha256: str,
+    exact_entity: bool,
+    identity_proof: Any,
+    acquisition_mode: str,
+    rights_status: str,
+    evidence_span: str | None = None,
+    source_class: str | None = None,
+    sentiment_label: str | None = None,
+    sentiment_model_version: str | None = None,
+    effective_at: str | None = None,
+    metrics: dict[str, Any] | None = None,
+    strategy: str | None = None,
+    **kwargs: Any,
+) -> dict[str, Any]:
+    """Construct and validate a publishable external observation."""
+    item: dict[str, Any] = {
+        "id": str(id).strip(),
+        "organisation_number": str(organisation_number).strip(),
+        "platform": str(platform).strip(),
+        "signal_type": str(signal_type).strip(),
+        "source_url": str(source_url).strip(),
+        "retrieved_at": str(retrieved_at).strip(),
+        "content_sha256": str(content_sha256).strip(),
+        "exact_entity": bool(exact_entity),
+        "identity_proof": identity_proof,
+        "acquisition_mode": str(acquisition_mode).strip(),
+        "rights_status": str(rights_status).strip(),
+    }
+    if evidence_span is not None:
+        item["evidence_span"] = str(evidence_span)
+    if source_class is not None:
+        item["source_class"] = str(source_class)
+    if sentiment_label is not None:
+        item["sentiment_label"] = str(sentiment_label)
+    if sentiment_model_version is not None:
+        item["sentiment_model_version"] = str(sentiment_model_version)
+    if effective_at is not None:
+        item["effective_at"] = str(effective_at)
+    if metrics is not None:
+        item["metrics"] = metrics
+    if strategy is not None:
+        item["strategy"] = str(strategy)
+    for k, v in kwargs.items():
+        if k not in item:
+            item[k] = v
+
+    reasons = validate_observation(item)
+    if reasons:
+        raise ValueError(f"Invalid observation {item.get('id')}: {'; '.join(reasons)}")
+    return item
+
+
+def safe_read_jsonl(path: Any, *, warn_on_error: bool = False) -> list[dict[str, Any]]:
+    """Safely read JSONL files, handling concatenated JSON objects, malformed lines, and BOM."""
+    p = path if hasattr(path, "exists") else Path(str(path))
+    if not p.exists():
+        return []
+    try:
+        content = p.read_text(encoding="utf-8-sig")
+    except Exception as exc:
+        if warn_on_error:
+            import sys
+            sys.stderr.write(f"Warning: could not read {p}: {exc}\n")
+        return []
+
+    lines: list[str] = []
+    for raw_line in content.splitlines():
+        trimmed = raw_line.strip()
+        if not trimmed:
+            continue
+        if trimmed.startswith("{") and "}{" in trimmed:
+            for part in trimmed.replace("}{", "}\n{").splitlines():
+                if part.strip():
+                    lines.append(part.strip())
+        else:
+            lines.append(trimmed)
+
+    rows: list[dict[str, Any]] = []
+    import json
+    import sys
+    decoder = json.JSONDecoder()
+    for idx, line in enumerate(lines, start=1):
+        try:
+            obj = json.loads(line)
+            if isinstance(obj, dict):
+                rows.append(obj)
+            elif warn_on_error:
+                sys.stderr.write(f"Warning: line {idx} in {p.name} is not a dict\n")
+        except json.JSONDecodeError:
+            pos = 0
+            decoded = False
+            while pos < len(line):
+                while pos < len(line) and line[pos] in " \t\r\n\\":
+                    pos += 1
+                if pos >= len(line):
+                    break
+                try:
+                    obj, end_pos = decoder.raw_decode(line, pos)
+                    if isinstance(obj, dict):
+                        rows.append(obj)
+                        decoded = True
+                    pos = end_pos
+                except Exception:
+                    break
+            if not decoded and warn_on_error:
+                sys.stderr.write(f"Warning: line {idx} in {p.name} has malformed JSON, skipped\n")
+    return rows
+
+
 def _as_datetime(value: str | None) -> datetime | None:
     try:
         parsed = datetime.fromisoformat(str(value or "").replace("Z", "+00:00"))
@@ -157,7 +274,20 @@ def aggregate_footprint(
         for item in public_items
         for field in ("likes", "comments", "shares")
     )
+    ratings = [
+        float(item["metrics"]["rating"])
+        for item in review_items
+        if isinstance(item.get("metrics"), dict) and item["metrics"].get("rating") is not None
+    ]
+    review_counts = [
+        int(item["metrics"]["review_count"])
+        for item in review_items
+        if isinstance(item.get("metrics"), dict) and item["metrics"].get("review_count") is not None
+    ]
+    avg_rating = round(sum(ratings) / len(ratings), 2) if ratings else None
+    total_reviews = max(review_counts) if review_counts else len(ratings)
     unique_public_items = len({str(item.get("source_url")) for item in public_items})
+    summary_item = next((item for item in review_items if item["signal_type"] == "review_summary"), review_items[0] if review_items else None)
 
     return {
         "status": "available" if accepted else "not_available",
@@ -169,6 +299,17 @@ def aggregate_footprint(
         "fresh_observations": len(fresh),
         "freshness_days": freshness_days,
         "review_signal_count": len(review_items),
+        "reviews": {
+            "status": "available" if review_items else "not_available",
+            "signals": len(review_items),
+            "average_rating": avg_rating,
+            "total_review_count": total_reviews if review_items else 0,
+            "platforms": sorted({item["platform"] for item in review_items}),
+            "source_url": summary_item.get("source_url") if summary_item else None,
+            "retrieved_at": summary_item.get("retrieved_at") if summary_item else None,
+            "content_sha256": summary_item.get("content_sha256") if summary_item else None,
+            "source_class": summary_item.get("source_class") if summary_item else None,
+        },
         "active_job_count": len({str(item.get("source_url")) for item in job_items}),
         "public_item_count": unique_public_items,
         "public_engagement": engagement,

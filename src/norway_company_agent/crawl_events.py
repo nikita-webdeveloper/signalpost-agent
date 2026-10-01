@@ -59,12 +59,14 @@ def extract_page_event(
         "social_links": _social_links(final_url, soup),
         "extraction_state": _extraction_state(text, soup),
     }
+    structured = extruct.extract(page_html, base_url=final_url, syntaxes=["json-ld", "microdata", "opengraph"])
     if page_kind == "homepage":
-        structured = extruct.extract(page_html, base_url=final_url, syntaxes=["json-ld", "microdata", "opengraph"])
         event["structured_organisations"] = _jsonld_organisations(structured)
         combined_social = event["social_links"] + structured_social_links(event["structured_organisations"])
         event["social_links"] = list({(item["platform"], item["url"]): item for item in combined_social}.values())
         event["registered_domain"] = _registered_domain(final_url)
+    else:
+        event["structured_organisations"] = _jsonld_organisations(structured)
     return event
 
 
@@ -141,10 +143,14 @@ def merge_profile_events(profile: dict[str, Any], events: list[dict[str, Any]]) 
             "main_text_excerpt": item.get("main_text_excerpt") or "",
             "identity_text_excerpt": item.get("identity_text_excerpt") or "",
             "content_sha256": item.get("content_sha256"),
+            "structured_organisations": item.get("structured_organisations") or [],
         }
         unique_pages[item.get("final_url")] = page
         for link in item.get("social_links") or []:
             social[(link.get("platform"), link.get("url"))] = link
+    structured_organisations = []
+    for page in unique_pages.values():
+        structured_organisations.extend(page.get("structured_organisations") or [])
     value = {
         "requested_url": homepage.get("requested_url"),
         "final_url": homepage.get("final_url"),
@@ -154,7 +160,7 @@ def merge_profile_events(profile: dict[str, Any], events: list[dict[str, Any]]) 
         "main_text_excerpt": homepage.get("main_text_excerpt") or "",
         "identity_text_excerpt": homepage.get("identity_text_excerpt") or "",
         "social_links": list(social.values()),
-        "structured_organisations": homepage.get("structured_organisations") or [],
+        "structured_organisations": structured_organisations,
         "content_sha256": homepage.get("content_sha256"),
         "extraction_state": homepage.get("extraction_state"),
         "pages": list(unique_pages.values()),

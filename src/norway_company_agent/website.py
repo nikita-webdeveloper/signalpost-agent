@@ -31,6 +31,9 @@ SOCIAL_HOSTS = {
     "tiktok.com": "tiktok",
 }
 PRIORITY_TERMS = (
+    "reviews", "review", "anmeldelser", "anmeldelse", "omtaler", "omtale",
+    "kundevurderinger", "kundevurdering", "testimonials", "testimonial",
+    "referanser", "referanse", "kundehistorier", "customer-stories", "case-studies",
     "om-oss", "om_oss", "about", "kontakt", "contact", "ledelse", "management",
     "team", "people", "locations", "lokasjoner", "avdelinger", "butikker",
     "news", "press", "aktuelt", "nyheter",
@@ -186,7 +189,7 @@ def normalize_social_url(url: str) -> dict[str, str] | None:
     return {"platform": platform, "url": f"https://{canonical_host}/{'/'.join(parts)}"}
 
 
-def _priority_links(base_url: str, soup: BeautifulSoup, limit: int = 4) -> list[str]:
+def _priority_links(base_url: str, soup: BeautifulSoup, limit: int = 8) -> list[str]:
     base = urllib.parse.urlparse(base_url)
     candidates: dict[str, int] = {}
     for anchor in soup.select("a[href]"):
@@ -302,7 +305,7 @@ def fetch_website(url: str | None, *, timeout: float = 15.0, max_bytes: int = 2_
             "extraction_state": _extraction_state(text, soup),
         }
         pages = [{"url": final_url, "title": title[:500], "main_text_excerpt": text[:5000], "content_sha256": value["content_sha256"]}]
-        social = value["social_links"]
+        social = value["social_links"] + structured_social_links(structured)
         crawl_errors = []
         requests = 2
         bytes_received = len(raw)
@@ -344,3 +347,4 @@ def fetch_website(url: str | None, *, timeout: float = 15.0, max_bytes: int = 2_
     except Exception as exc:
         elapsed = int((time.monotonic() - started) * 1000)
         return evidence("website", "source_error", "registry_linked_company_website", normalized, note=f"{type(exc).__name__}: {str(exc)[:180]}"), {"requests": 2, "bytes": 0, "latencies_ms": [elapsed]}
+
